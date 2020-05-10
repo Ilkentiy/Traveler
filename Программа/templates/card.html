@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row py-5 px-4">
+    <div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 bg-dark">
+                <div class="media align-items-end profile-header">
+                    <div class="profile mr-3">
+                        <form method="post" enctype="multipart/form-data" class="link" onclick="photo.click()"><img
+                                src="static/img/avatar.jpg" alt="..."
+                                width="130" class="rounded mb-2 img-thumbnail">
+                            <input type="file" id=photo name="file" accept="image/jpeg" onchange="this.form.submit ()"
+                                   hidden>
+                        </form>
+                    </div>
+                    <div class=" media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{current_user.name}} {{current_user.surname}}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{current_user.colvo_otziv}}</h5><small
+                            class="text-muted"> <i
+                            class="fa fa-picture-o mr-1"></i>Отзывы</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{current_user.colvo_travel}}</h5><small
+                            class="text-muted"> <i
+                            class="fa fa-user-circle-o mr-1"></i>Путешествия</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .link {
+    position: relative;
+    display: inline-block;
+}
+.link img {
+    display: block;
+}
+.link:after {
+    position: absolute;
+    display: block;
+    content: " ";
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+}
+.link:hover:after {
+    background: rgba(0, 0, 155, 0.1);
+}
+
+</style>
+{% endblock %}

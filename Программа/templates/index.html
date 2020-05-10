@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<h1>Список путешествий</h1>
+<a href="/travel_form" class="btn btn-secondary" id="ar" hidden></a>
+<div class="px-4 pt-0 pb-4 bg-light" style="margin-top: 20px">
+{% for item in travel%}
+    <div class="col-md6 border rounded link" data-toggle="tooltip" data-placement="right"
+         title="Нажмите чтобы узнать подробности" onclick="window.location.href='/travel/{{item.id}}'" style="margin-top: 20px">
+        <h2>{{item.headline}}</h2>
+        <div>
+            {{item.description[:300] + '...'}}
+        </div>
+        <div style="margin-top: 10px">
+            Дата создания - {{item.date.date()}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div id="scroll-top">
+    <button onclick="ar.click()"><span data-hover="Добавить"><div class="text-white"
+                                                                  style="margin-down: 10px">+</div></span></button>
+</div>
+
+<style type="text/css">
+
+#scroll-top {
+  position: fixed;
+  bottom: 48px;
+  right: 48px;
+}
+
+#scroll-top button {
+  position: relative;
+  overflow: hidden;
+  height: 48px;
+  width: 48px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  background: #21c984;
+  transition: width 0.5s;
+  border-radius: 100px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#scroll-top button span {
+  display: inline-block;
+  transition: opacity 0.3s ease 0s, transform 0.5s ease 0s;
+  line-height: 48px;
+  font-size: 20px;
+  width: 100%;
+}
+
+#scroll-top button span::before {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 200%;
+  opacity: 0;
+  content: attr(data-hover);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+#scroll-top:hover button {
+  width: 120px;
+  background: #9b59b6;
+}
+
+#scroll-top:hover button span {
+  -webkit-transform: translateY(-200%);
+  -moz-transform: translateY(-200%);
+  transform: translateY(-200%);
+}
+
+#scroll-top:hover button span:before {
+  opacity: 1;
+}
+
+#scroll-top button:active {
+  background: #21c984;
+}
+
+.link:hover {
+    background: rgba(255, 255, 0, 0.1);
+
+</style>
+{% else %}
+<style type="text/css">
+    body {
+       background: url(https://blacksector.solutions/uploads/monthly_2017_06/turist_progulka_ryukzak_les_tuman_115973_1920x1080.jpg.dc954894892d1a61d6e3766aa7cfadf0.jpg) no-repeat center center fixed;
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       background-position: 100% 100%;
+}
+h6 {
+font-size: 100px;
+font-weight: 600;
+margin-left: 50px
+}
+div {
+font-size: 50px;
+font-weight: 400;
+margin-top: 0px;
+}
+
+
+
+</style>
+<h6 class="text-white">
+    Traveler
+</h6>
+<div id="ae" class="text-white">
+    Рай для путешествий
+</div>
+
+{% endif %}
+{% endblock %}

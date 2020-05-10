@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="px-4 pt-0 pb-4 bg-light" style="margin-top: 20px">
+    <h2 align="center">Создание путешествия</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Название</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="headline">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Описание</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="description"></textarea>
+            <div class="container" data-toggle="tooltip" data-placement="right"
+                 title="Изображения должны быть все одного масштаба. Для монитора лучше использовать 640x360">
+
+                <label for="con" style="margin-top: 20px">Добавление изображений (подсказка)</label>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 20px" id="con">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">1 изображение</label>
+                        <input type="file" class="form-control-file" accept="image/jpeg" id="exampleFormControlFile1"
+                               name="img_1">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile2">2 изображение</label>
+                        <input type="file" class="form-control-file" accept="image/jpeg" id="exampleFormControlFile2"
+                               name="img_2">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile3">3 изображение</label>
+                        <input type="file" class="form-control-file" accept="image/jpeg" id="exampleFormControlFile3"
+                               name="img_3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px">
+            <label for="exampleFormControlInput2" data-toggle="tooltip" data-placement="right"
+                   title="1.Заходим на карту (Google, Яндекс)
+2.Ставим наше место на конечную точку, а начальную оставлем пустой
+3.Копируем URL данной страницы">Ссылка
+                на карту (откуда взять ссылку?)</label>
+            <input type="text" class="form-control" id="exampleFormControlInput2" name="route">
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить
+        </button>
+    </form>
+</div>
+{% endblock %}
